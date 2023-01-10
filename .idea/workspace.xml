@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b50bc3a-33e0-4a9a-b985-818b11ceefb5" name="Changes" comment="finish game prototype">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/Damage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/Obstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/ObstacleImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/crossfire/ClearableObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/crossfire/ClearedObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/crossfire/TestGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/crossfire/TestObstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/crossfire/TestPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +48,11 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -128,8 +111,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673251950579</updated>
-      <workItem from="1673251951954" duration="11790000" />
+      <workItem from="1673251951954" duration="17748000" />
+      <workItem from="1673338682291" duration="924000" />
     </task>
+    <task id="LOCAL-00001" summary="finish game prototype">
+      <created>1673264650461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673264650461</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,5 +141,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish game prototype" />
     <option name="LAST_COMMIT_MESSAGE" value="finish game prototype" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
