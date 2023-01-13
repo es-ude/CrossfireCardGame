@@ -18,18 +18,16 @@ public class TestPlayer {
 
     @Test
     public void cleanUpRemovesPlayedCards() {
-        Player p = createPlayer();
-        Card c = new Card("my card", Damage.RED, 0);
-        p.play(c);
-        p.cleanUp();
+        Player p = new Player(List.of(new Card("my card", Damage.RED, 0)))
+                .draw().play(0).cleanUp();
         assertEquals(Collections.emptyList(), p.cardsInPlay());
     }
 
     @Test
     public void cleanUpPutsCardsOntoDiscardPile() {
-        Player p = new Player(Collections.emptyList());
-        p.play(Card.Street_Smarts(33));
-        p.cleanUp();
+        Player p = new Player(List.of(Card.Street_Smarts(33)))
+                .draw().play(0)
+                .cleanUp();
         assertEquals(
                 List.of(Card.Street_Smarts(33)),
                 p.discardPile()
@@ -58,8 +56,7 @@ public class TestPlayer {
         Player p = new Player(List.of(
                 Card.Street_Smarts(0),
                 Card.Street_Smarts(1)
-        ));
-        p.draw();
+        )).draw();
         assertEquals(1, p.deckSize());
     }
 
@@ -67,9 +64,16 @@ public class TestPlayer {
     public void drawingCardPutsTopOfDeckIntoHand() {
         Player p = new Player(List.of(
                 Card.Street_Smarts(55)
-        ));
-        p.draw();
+        )).draw();
         assertEquals(Card.Street_Smarts(55), p.hand().get(0));
+    }
+
+    @Test
+    public void drawingCardFromEmptyDeckPutsDiscardOntoDeckAndDraws() {
+        Player p = new Player(List.of(Card.Street_Smarts(314)))
+                .draw().play(0).cleanUp()
+                .draw();
+        assertEquals(List.of(Card.Street_Smarts(314)), p.hand());
     }
 
     @Test
@@ -86,17 +90,13 @@ public class TestPlayer {
 
     @Test
     public void playingCardRemovesItFromHandIfPresent() {
-        Player p = createPlayer();
-        p.draw();
-        p.play(p.hand().get(0));
+        Player p = createPlayer().draw().play(0);
         assertEquals(0, p.hand().size());
     }
 
     @Test
     public void playingTwoCardsPutsBothIntoPlay() {
-        Player p = createPlayer();
-        p.draw();
-        p.draw();
+        Player p = createPlayer().draw(2);
         var first = p.hand().get(0);
         var second = p.hand().get(1);
         p.play(first);
@@ -106,9 +106,7 @@ public class TestPlayer {
 
     @Test
     public void twoDrawnCardsAreDifferent() {
-        var p = createPlayer();
-        p.draw();
-        p.draw();
+        var p = createPlayer().draw().draw();
         assertNotEquals(p.hand().get(0), p.hand().get(1));
     }
 

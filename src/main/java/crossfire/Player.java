@@ -33,13 +33,32 @@ public class Player {
     }
 
 
-    public void draw() {
-        hand.add(this.deck.pop());
+    public Player draw() {
+        if (deck.isEmpty()) {
+            deck.addAll(discardPile);
+            discardPile.clear();
+        }
+        hand.add(deck.pop());
+        return this;
     }
 
-    public void play(Card played) {
+    public Player draw(int numberOfCards) {
+        for (; numberOfCards > 0; numberOfCards--) {
+            this.draw();
+        }
+        return this;
+    }
+
+    public Player play(Card played) {
         cardsInPlay.add(played);
         hand.remove(played);
+        return this;
+    }
+
+    public Player play(int handIndex) {
+        var card = hand.remove(handIndex);
+        cardsInPlay.add(card);
+        return this;
     }
 
     public List<Card> cardsInPlay() {
@@ -58,13 +77,14 @@ public class Player {
         obstaclesInPlay.add(obstacle);
     }
 
-    public void cleanUp() {
+    public Player cleanUp() {
         discardPile.addAll(cardsInPlay);
         cardsInPlay.clear();
         var clearedObstacles = obstaclesInPlay.stream().filter(Obstacle::cleared).toList();
         for (var obstacle : clearedObstacles) {
             obstaclesInPlay.remove(obstacle);
         }
+        return this;
     }
 
     public int deckSize() {
