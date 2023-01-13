@@ -3,6 +3,7 @@ import crossfire.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -13,9 +14,13 @@ public class Main {
     public static void main(String [] args) {
         Obstacle firstObstacle = new ObstacleImpl(List.of(Damage.GRAY.times(2), Damage.RED), "firstObstacle");
         Obstacle secondObstacle = new ObstacleImpl(List.of(Damage.RED, Damage.GRAY.times(2)), "secondObstacle");
+        List<Card> cards = new LinkedList<>();
+        for (int id=0; id<2*10; id++) {
+            cards.add(Card.Street_Smarts(id));
+        }
 
-        var first = new Player();
-        var second = new Player();
+        var first = new Player(cards.subList(0, 10));
+        var second = new Player(cards.subList(10, 20));
 
         first.placeObstacle(firstObstacle);
         second.placeObstacle(secondObstacle);

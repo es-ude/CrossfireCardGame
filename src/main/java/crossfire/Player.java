@@ -1,17 +1,40 @@
 package crossfire;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Player {
-    private List<Card> hand = new LinkedList<>();
-    private List<Card> cardsInPlay = new LinkedList<>();
-    private List<Obstacle> obstaclesInPlay = new LinkedList<>();
-    private int nextCardId = 0;
+    private final List<Card> cardsInPlay;
+    private final List<Card> discardPile;
+    private final List<Card> hand = new LinkedList<>();
+    private final List<Obstacle> obstaclesInPlay;
+    private final Deque<Card> deck;
+
+    public Player(List<Card> deck) {
+        this((Deque<Card>) new LinkedList<>(deck));
+    }
+
+    public Player(Deque<Card> deck) {
+        this(deck, Collections.emptyList());
+    }
+
+
+    private Player(Deque<Card> deck, List<Card> cardsInPlay) {
+        this(deck, cardsInPlay, Collections.emptyList(), Collections.emptyList());
+    }
+
+    private Player(Deque<Card> deck,
+                   List<Card> cardsInPlay,
+                   List<Card> discardPile,
+                   List<Obstacle> obstaclesInPlay) {
+        this.deck = new LinkedList<>(deck);
+        this.cardsInPlay = new LinkedList<>(cardsInPlay);
+        this.obstaclesInPlay = new LinkedList<>(obstaclesInPlay);
+        this.discardPile = new LinkedList<>(discardPile);
+    }
+
 
     public void draw() {
-        hand.add(new Card("Street Smarts", Damage.RED, nextCardId));
-        nextCardId++;
+        hand.add(this.deck.pop());
     }
 
     public void play(Card played) {
@@ -36,10 +59,19 @@ public class Player {
     }
 
     public void cleanUp() {
+        discardPile.addAll(cardsInPlay);
         cardsInPlay.clear();
         var clearedObstacles = obstaclesInPlay.stream().filter(Obstacle::cleared).toList();
         for (var obstacle : clearedObstacles) {
             obstaclesInPlay.remove(obstacle);
         }
+    }
+
+    public int deckSize() {
+        return deck.size();
+    }
+
+    public List<Card> discardPile() {
+        return discardPile;
     }
 }

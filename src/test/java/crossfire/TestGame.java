@@ -10,10 +10,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestGame {
+    private Player createEmptyDeckPlayer() {
+        return new Player(Collections.emptyList());
+    }
 
+    private Player createPlayer() {
+        return new Player(List.of(
+                Card.Street_Smarts(0),
+                Card.Street_Smarts(1),
+                Card.Street_Smarts(2),
+                Card.Street_Smarts(3)
+        ));
+    }
     @Test
     public void canGetAMapOfCardsInPlayAssociatedWithPlayers() {
-        Player p = new Player();
+        Player p = createEmptyDeckPlayer();
         Card first = new Card("card", Damage.RED, 0);
         Card second = new Card("second card", Damage.GREEN, 0);
         p.play(first);
@@ -24,7 +35,7 @@ public class TestGame {
 
     @Test
     public void canGetAMapOfObstaclesInPlayAssociatedWithPlayers() {
-        Player p = new Player();
+        Player p = createEmptyDeckPlayer();
         var first = new ClearedObstacle();
         var second = new ClearedObstacle();
         p.placeObstacle(first);
@@ -35,7 +46,7 @@ public class TestGame {
 
     @Test
     public void recordAssignedCards() {
-        Game g = new Game(Collections.emptyList());
+        Game g = new Game(List.of(createEmptyDeckPlayer()));
         var obstacle = new ClearedObstacle();
         var card = new Card("card", Damage.GREEN, 0);
         g.assign(card, obstacle);
@@ -44,7 +55,7 @@ public class TestGame {
 
     @Test
     public void assignedCardsAreAppliedToObstaclesAtEndOfTurn() {
-        Game g = new Game(List.of(new Player()));
+        Game g = new Game(List.of(createPlayer()));
         var obstacle = new ClearableObstacle(2);
         var first = new Card("card", Damage.GREEN, 0);
         var second = new Card("", Damage.GREEN, 1);
