@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b50bc3a-33e0-4a9a-b985-818b11ceefb5" name="Changes" comment="put cards from play onto discard">
+    <list default="true" id="3b50bc3a-33e0-4a9a-b985-818b11ceefb5" name="Changes" comment="Solve feature-1, specify feature-2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/crossfire/PlayerBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/crossfire/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/crossfire/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/crossfire/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/crossfire/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/crossfire/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/crossfire/TestGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/crossfire/TestPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/crossfire/TestPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +63,7 @@
   "keyToString": {
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,7 +72,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -127,7 +133,8 @@
       <updated>1673251950579</updated>
       <workItem from="1673251951954" duration="17748000" />
       <workItem from="1673338682291" duration="924000" />
-      <workItem from="1673622637004" duration="5659000" />
+      <workItem from="1673622637004" duration="5721000" />
+      <workItem from="1673880508340" duration="10561000" />
     </task>
     <task id="LOCAL-00001" summary="finish game prototype">
       <created>1673264650461</created>
@@ -143,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673627238550</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="put discard pile onto deck when drawing from empty deck">
+      <created>1673628496637</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673628496637</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +177,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="finish game prototype" />
     <MESSAGE value="put cards from play onto discard" />
-    <option name="LAST_COMMIT_MESSAGE" value="put cards from play onto discard" />
+    <MESSAGE value="put discard pile onto deck when drawing from empty deck" />
+    <MESSAGE value="Solve feature-1, specify feature-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solve feature-1, specify feature-2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

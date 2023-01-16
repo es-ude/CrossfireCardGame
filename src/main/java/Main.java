@@ -18,9 +18,9 @@ public class Main {
         for (int id=0; id<2*10; id++) {
             cards.add(Card.Street_Smarts(id));
         }
-
-        var first = new Player(cards.subList(0, 10));
-        var second = new Player(cards.subList(10, 20));
+        var playerBuilder = new PlayerBuilder();
+        var first = playerBuilder.deck(cards.subList(0, 10)).build();
+        var second = playerBuilder.deck(cards.subList(10, 20)).build();
 
         first.placeObstacle(firstObstacle);
         second.placeObstacle(secondObstacle);
