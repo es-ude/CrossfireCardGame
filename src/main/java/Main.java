@@ -1,4 +1,5 @@
 import crossfire.*;
+import crossfire.actions.Action;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +10,9 @@ import java.util.List;
 import static java.lang.System.out;
 
 public class Main {
-    static Game game;
+    static GameImpl game;
 
-    public static void main(String [] args) {
+    public static void setup() {
         Obstacle firstObstacle = new ObstacleImpl(List.of(Damage.GRAY.times(2), Damage.RED), "firstObstacle");
         Obstacle secondObstacle = new ObstacleImpl(List.of(Damage.RED, Damage.GRAY.times(2)), "secondObstacle");
         List<Card> cards = new LinkedList<>();
@@ -25,7 +26,11 @@ public class Main {
         first.placeObstacle(firstObstacle);
         second.placeObstacle(secondObstacle);
 
-        game = new Game(List.of(first, second));
+        game = new GameImpl(List.of(first, second));
+    }
+
+    public static void main(String [] args) {
+        setup();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             while (true) {
@@ -40,18 +45,6 @@ public class Main {
 
     private static int getNextInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
-    }
-
-    private static void assignDamage(BufferedReader reader) throws IOException {
-        var playedCards = game.cardsInPlay().keySet().stream().toList();
-        out.println("select card in play: ");
-        printItems(playedCards);
-        int cardIndex = getNextInt(reader);
-        var obstacles = game.obstaclesInPlay().keySet().stream().toList();
-        out.println("select and obstacle:\n");
-        printItems(obstacles);
-        int obstacleIndex = getNextInt(reader);
-        game.assign(playedCards.get(cardIndex), obstacles.get(obstacleIndex));
     }
 
     private static <T> void printItems(List<T> items) {
@@ -69,26 +62,13 @@ public class Main {
         out.println("Obstacles:");
         printItems(game.obstaclesInPlay().keySet().stream().toList());
         out.println("Actions:");
-        printItems(List.of("play card", "assign Damage", "end Turn"));
+        printItems(game.getActions().stream().map(Action::describe).toList());
     }
 
     private static void selectAction(BufferedReader reader) throws IOException {
+        var actions = game.getActions();
         int action = getNextInt(reader);
-        switch (action) {
-            case 0 -> playCard(reader);
-            case 1 -> assignDamage(reader);
-            case 2 -> endTurn();
-        }
+        actions.get(action).take();
     }
 
-    private static void endTurn(){
-        game.endTurn();
-    }
-
-    private static void playCard(BufferedReader reader) throws IOException {
-        var p = game.activePlayer();
-        var hand = p.hand();
-        int cardIndex = getNextInt(reader);
-        p.play(hand.get(cardIndex));
-    }
 }
