@@ -148,3 +148,46 @@ presenting the current game state to the user. Use a simple behavioural
 pattern to decouple the game logic from the UI. **Hint**: If this leads
 to you game logic becoming cluttered with if-else/switch-case statements,
 consider using a state pattern to make the code of the `Game` more expressive.
+
+## Agile Development
+
+### Feature Backlog
+- [ ] Undo/Redo
+- [ ] Player gold
+- [ ] Buy cards from market with gold
+- [ ] Game state altering card effects
+
+### Sprint Features
+- [ ] Shuffle Deck (1) (Kamil)
+- [ ] Save and load game (3) (Jonas)
+- [ ] Market place (4) (Lukas, Julian)
+- [ ] Obstacle gold value (2) (Lukas, David)
+- [ ] Only draw two cards if less than four in hand otherwise draw none (1) (Constantin)
+
+### User Stories
+
+##### Save and load game
+As a player i can quit a game and the state at the start of my turn is saved, such
+that i can load it on startup to continue it later.
+
+
+##### Market place
+As a player, after drawing cards i can gain cards from the "market place"
+and put them into my hand, such that i increase my card pool from turn to turn.
+
+Details: Market place holds 6 cards,
+that can be arbitrarily chosen from, after gaining
+a card, the empty slot is refilled.
+
+#### Buy cards from market place
+As a player i need to pay the money specified on the respective card, to gain it from the market place
+
+#### User gold
+As a player i can collect gold, such that i can use it to gain/buy cards
+from the market place.
+
+##### Obstacle gold value
+As players, after clearing an obstacle, we gain gold, such that each of us
+collects more gold.
+
+Details: Obstacle has a numeric gold value
