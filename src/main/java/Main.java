@@ -37,6 +37,7 @@ public class Main {
         setup();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            gameLoadRequest(reader);
             while (true) {
                 display();
                 selectAction(reader);
@@ -47,8 +48,22 @@ public class Main {
         }
     }
 
+    private static void gameLoadRequest(BufferedReader reader) throws IOException {
+        System.out.println("Should a saved game be loaded (Y/N)");
+        if (getNextString(reader).strip().equals("Y"))
+        {
+            game = gameLoader.load(game);
+
+        }
+
+    }
+
     private static int getNextInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
+    }
+
+    private static String getNextString(BufferedReader reader) throws IOException {
+        return reader.readLine();
     }
 
     private static <T> void printItems(List<T> items) {

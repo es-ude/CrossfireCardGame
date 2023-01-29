@@ -110,7 +110,7 @@ public class GameImpl implements Game {
         File file = new File("saveGame.txt");
         FileWriter fw = new FileWriter(file);
         for (int input: userInputs) {
-            fw.write(Integer.toString(input));
+            fw.write(input + ",");
         }
         fw.close();
 
