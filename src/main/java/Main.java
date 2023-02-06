@@ -1,5 +1,6 @@
 import crossfire.*;
 import crossfire.actions.Action;
+import crossfire.actions.EndTurn;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import static java.lang.System.out;
 
 public class Main {
     static GameImpl game;
+    static private List<Integer> userInputs;
 
     public static void setup() {
         Obstacle firstObstacle = new ObstacleImpl(List.of(Damage.GRAY.times(2), Damage.RED), "firstObstacle");
@@ -26,6 +28,8 @@ public class Main {
         first.placeObstacle(firstObstacle);
         second.placeObstacle(secondObstacle);
 
+        userInputs = new LinkedList<>();
+
         game = new GameImpl(List.of(first, second));
     }
 
@@ -33,6 +37,7 @@ public class Main {
         setup();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            gameLoadRequest(reader);
             while (true) {
                 display();
                 selectAction(reader);
@@ -43,8 +48,22 @@ public class Main {
         }
     }
 
+    private static void gameLoadRequest(BufferedReader reader) throws IOException {
+        System.out.println("Should a saved game be loaded (Y/N)");
+        if (getNextString(reader).strip().equals("Y"))
+        {
+            game = gameLoader.load(game);
+
+        }
+
+    }
+
     private static int getNextInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
+    }
+
+    private static String getNextString(BufferedReader reader) throws IOException {
+        return reader.readLine();
     }
 
     private static <T> void printItems(List<T> items) {
@@ -68,7 +87,12 @@ public class Main {
     private static void selectAction(BufferedReader reader) throws IOException {
         var actions = game.getActions();
         int action = getNextInt(reader);
+        userInputs.add(action);
         actions.get(action).take();
+        if (actions.get(action) instanceof EndTurn )
+        {
+            game.saveGame(userInputs);
+        }
     }
 
 }

@@ -5,6 +5,10 @@ import crossfire.actions.AssignCard;
 import crossfire.actions.EndTurn;
 import crossfire.actions.PlayCard;
 
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
 
@@ -99,5 +103,16 @@ public class GameImpl implements Game {
 
     public Map<Obstacle, Player> obstaclesInPlay() {
         return collectAcrossPlayers(Player::obstaclesInPlay);
+    }
+
+    public void saveGame(List<Integer> userInputs) throws IOException {
+
+        File file = new File("saveGame.txt");
+        FileWriter fw = new FileWriter(file);
+        for (int input: userInputs) {
+            fw.write(input + ",");
+        }
+        fw.close();
+
     }
 }
